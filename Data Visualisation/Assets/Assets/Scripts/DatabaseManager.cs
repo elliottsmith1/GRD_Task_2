@@ -65,6 +65,11 @@ public class DatabaseManager : MonoBehaviour
         {
             case DATATYPE.DISEASE:
 
+                for (int i = 0; i < _diseases.Count; i++)
+                {
+                    
+                }
+
                 break;
             case DATATYPE.RACE:
 
