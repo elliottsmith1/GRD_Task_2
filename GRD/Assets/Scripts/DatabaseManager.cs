@@ -59,24 +59,8 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
-    public void SeparateByDataType(DATATYPE _type, List<DiseaseStats> _diseases)
+    public void SeparateByDataType(DATATYPE _type)
     {
-        switch (_type)
-        {
-            case DATATYPE.DISEASE:
-
-                for (int i = 0; i < _diseases.Count; i++)
-                {
-                    
-                }
-
-                break;
-            case DATATYPE.RACE:
-
-                break;
-            case DATATYPE.SEX:
-
-                break;
-        }
+        
     }
 }
