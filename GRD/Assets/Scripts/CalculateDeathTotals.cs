@@ -6,7 +6,10 @@ public class CalculateDeathTotals : MonoBehaviour {
 
     [SerializeField] DatabaseManager manager;
 
-    [SerializeField] List<int> death_totals = new List<int>();
+    public List<int> death_totals = new List<int>();
+
+    public int max_deaths = 0;
+    public int min_deaths = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -35,11 +38,24 @@ public class CalculateDeathTotals : MonoBehaviour {
                 if (manager.disease_names[l] == manager.disease_databse[j].death_cause)
                 {
                     id = l;
-
+                    manager.disease_databse[j].id = id;
                     death_totals[id] += (int)manager.disease_databse[j].deaths;
                     break;
                 }
             }            
+        }
+
+        for (int k = 0; k < death_totals.Count; k++)
+        {
+            if (death_totals[k] > max_deaths)
+            {
+                max_deaths = death_totals[k];
+            }
+        }
+
+        for (int x = 0; x < manager.disease_databse.Count; x++)
+        {
+
         }
     }
 }
