@@ -8,17 +8,33 @@ public class Person : MonoBehaviour {
     public string sex;
     public string race;
 
-    public float speed = 3;
+    public float walk_speed = 3;
+    public float run_speed = 6;
+    private float speed;
+
+    public bool seeking = false;
+
+    private Vector3 target_location;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        speed = walk_speed;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        RandomMovement();
+        if (!seeking)
+        {
+            RandomMovement();
+        }
+        else
+        {
+            transform.LookAt(target_location);
+        }
+
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
     void RandomMovement()
@@ -29,8 +45,19 @@ public class Person : MonoBehaviour {
         Quaternion rot = transform.rotation;
         rot.y += rand_turn;
 
-        transform.Rotate(0, rot.y, 0);
+        transform.Rotate(0, rot.y, 0);        
+    }
 
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+    public void SetTarget(Vector3 _target)
+    {
+        seeking = true;
+        target_location = _target;
+        speed = run_speed;
+    }
+
+    public void Reset()
+    {
+        seeking = false;
+        speed = walk_speed;
     }
 }
