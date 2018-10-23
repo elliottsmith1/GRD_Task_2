@@ -52,10 +52,5 @@ public class CalculateDeathTotals : MonoBehaviour {
                 max_deaths = death_totals[k];
             }
         }
-
-        for (int x = 0; x < manager.disease_databse.Count; x++)
-        {
-
-        }
     }
 }
