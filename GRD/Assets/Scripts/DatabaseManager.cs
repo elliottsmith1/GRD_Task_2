@@ -24,6 +24,7 @@ public class DatabaseManager : MonoBehaviour
     {
         CreateDiseases();
         GetComponent<CalculateDeathTotals>().Calculate();
+        GetComponent<PopulationManager>().Populate();
     }
 
     void CreateDiseases()
