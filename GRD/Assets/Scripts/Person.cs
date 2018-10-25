@@ -15,6 +15,7 @@ public class Person : MonoBehaviour {
     public bool seeking = false;
 
     private Vector3 target_location;
+    private Vector3 spawn_location;
 
 	// Use this for initialization
 	void Start ()
@@ -55,9 +56,24 @@ public class Person : MonoBehaviour {
         speed = run_speed;
     }
 
-    public void Reset()
+    public void ResetPerson()
     {
         seeking = false;
         speed = walk_speed;
+
+        float offset = 80;
+        float rand_offset_x = Random.Range(-offset, offset);
+        float rand_offset_z = Random.Range(-offset, offset);
+        Vector3 spawn = spawn_location;
+        spawn.x += rand_offset_x;
+        spawn.z += rand_offset_z;
+        transform.position = spawn;
+
+        GetComponent<MeshRenderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+    }
+
+    public void SetSpawn(Vector3 _spawn)
+    {
+        spawn_location = _spawn;
     }
 }
