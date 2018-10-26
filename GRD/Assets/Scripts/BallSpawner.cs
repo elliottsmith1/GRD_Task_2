@@ -22,7 +22,6 @@ public class BallSpawner : MonoBehaviour {
     public void SpawnBalls()                       //Spawns the balls by a diease category
     {
         childCount = trsm.childCount;
-
         GameObject[] DiseaseChildren = new GameObject[childCount];
 
         for (int i = 0; i < childCount; i++)
