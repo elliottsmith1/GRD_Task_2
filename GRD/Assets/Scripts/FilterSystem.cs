@@ -12,8 +12,8 @@ public class FilterSystem : MonoBehaviour {
     [SerializeField] Dropdown ethnicitydropdown_ref;
     [SerializeField] Button reset_ref;
 
-    [SerializeField] GameObject Spawnflag;                                   //Flag Sprite
-
+    [SerializeField] GameObject Spawnflag;                              //Flag Sprite
+    public Vector3 flagPosition = new Vector3(0f, 1f, 0f);              //Flag Position
 
     private List<GameObject> sub_group = new List<GameObject>();
     private List<GameObject> pre_sub_group = new List<GameObject>();    //Previous sub group to reset their positions
@@ -105,7 +105,7 @@ public class FilterSystem : MonoBehaviour {
         //Setting the new position for the group to organise to
         for (int i = 0; i < sub_group.Count; i++)
         {
-            sub_group[i].GetComponent<Person>().SetTarget(new Vector3(0f, 1f, 0f));
+            sub_group[i].GetComponent<Person>().SetTarget(flagPosition);
         }
 
         Flagged();
@@ -144,10 +144,8 @@ public class FilterSystem : MonoBehaviour {
 
     void Flagged()                  //Giving the individual person a flag over their head
     {
-        for (int i = 0; i < sub_group.Count; i++)
-        {
-            Instantiate(Spawnflag, sub_group[i].transform);
-        }
+        //new Vector3 as a cheap edit for the size of the flag
+        Instantiate(Spawnflag, flagPosition + new Vector3(0f,10f,0), Quaternion.identity);
     }
 
     void Unflagged()                //Taking their flag away

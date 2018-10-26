@@ -1391,6 +1391,7 @@ MonoBehaviour:
   ethnicitydropdown_ref: {fileID: 861791372}
   reset_ref: {fileID: 161044419}
   Spawnflag: {fileID: 1744151319775980, guid: 7df09fcee03a5ae42a55d6ee3a1f3e24, type: 2}
+  flagPosition: {x: 0, y: 1, z: 0}
 --- !u!1 &389703272
 GameObject:
   m_ObjectHideFlags: 0
