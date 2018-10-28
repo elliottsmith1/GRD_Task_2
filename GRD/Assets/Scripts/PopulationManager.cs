@@ -38,7 +38,7 @@ public class PopulationManager : MonoBehaviour {
             population_year = year_slider_ref.current_year;
             Populate();
         }
-
+        /*                                  //Adam here, I commented this out because it's not needed anymore
         if (Input.GetButtonDown("Fire2"))
         {
             List<GameObject> sub_group = new List<GameObject>();
@@ -48,7 +48,7 @@ public class PopulationManager : MonoBehaviour {
             {
                 sub_group[i].GetComponent<Person>().SetTarget(transform.position);
             }
-        }
+        }*/
 	}
 
     public void Populate()
