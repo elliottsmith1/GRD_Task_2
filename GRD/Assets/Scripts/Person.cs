@@ -19,12 +19,17 @@ public class Person : MonoBehaviour {
 
     [SerializeField] GameObject light;
 
-	// Use this for initialization
-	void Start ()
+    float freq;
+
+
+    // Use this for initialization
+    void Start ()
     {
         speed = walk_speed;
         light.SetActive(false);
-	}
+
+        freq = Random.Range(1.0f, 2.0f);
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -39,6 +44,7 @@ public class Person : MonoBehaviour {
         }
 
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        Bob();
     }
 
     void RandomMovement()
@@ -85,5 +91,16 @@ public class Person : MonoBehaviour {
     public void EnableLight()
     {
         light.SetActive(true);
+    }
+
+    void Bob()
+    {
+        float amp = 0.5f;
+        Vector3 tempPos = transform.position;
+        tempPos.y = 1;
+
+        tempPos.y += Mathf.Sin(Time.fixedTime * Mathf.PI * freq) * amp;
+
+        transform.position = tempPos;
     }
 }

@@ -15,7 +15,7 @@ public class CameraControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        transform.LookAt(look_at);        
+        transform.LookAt(look_at);
 
         if (Input.GetKey(KeyCode.D))
         {
@@ -25,6 +25,16 @@ public class CameraControl : MonoBehaviour {
         else if (Input.GetKey(KeyCode.A))
         {
             transform.RotateAround(Vector3.zero, Vector3.up, speed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
+
+        else if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(-Vector3.forward * speed * Time.deltaTime);
         }
     }
 }
