@@ -218,6 +218,7 @@ public class FilterSystem : MonoBehaviour
         for (int i = 0; i < sub_group_list[selectFlag].Count; i++)
         {
             sub_group_list[selectFlag][i].GetComponent<Person>().SetTarget(flagPosition[selectFlag]);
+            sub_group_list[selectFlag][i].GetComponent<Person>().EnableLight();
         }
         selectFlagCheck[selectFlag] = true;
     }

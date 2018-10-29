@@ -17,10 +17,13 @@ public class Person : MonoBehaviour {
     private Vector3 target_location;
     private Vector3 spawn_location;
 
+    [SerializeField] GameObject light;
+
 	// Use this for initialization
 	void Start ()
     {
         speed = walk_speed;
+        light.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -58,6 +61,8 @@ public class Person : MonoBehaviour {
 
     public void ResetPerson()
     {
+        light.SetActive(false);
+
         seeking = false;
         speed = walk_speed;
 
@@ -75,5 +80,10 @@ public class Person : MonoBehaviour {
     public void SetSpawn(Vector3 _spawn)
     {
         spawn_location = _spawn;
+    }
+
+    public void EnableLight()
+    {
+        light.SetActive(true);
     }
 }
