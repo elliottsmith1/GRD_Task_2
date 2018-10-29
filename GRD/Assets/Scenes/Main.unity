@@ -1157,11 +1157,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.5
+      value: 38.3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1189,15 +1189,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalScale.y
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalScale.z
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
@@ -1626,7 +1626,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -66.3
+      value: -69.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1634,7 +1634,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.5
+      value: 38.3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1662,15 +1662,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalScale.y
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalScale.z
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
@@ -1739,15 +1739,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalScale.y
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalScale.z
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
@@ -3424,7 +3424,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -66.3
+      value: -69.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3456,15 +3456,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalScale.x
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalScale.y
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
       propertyPath: m_LocalScale.z
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6935d7b4e179444390c6947d33cdaff, type: 3}
