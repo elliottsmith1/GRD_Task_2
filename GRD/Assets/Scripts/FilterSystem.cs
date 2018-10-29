@@ -205,7 +205,6 @@ public class FilterSystem : MonoBehaviour
         {
             if (selectFlagCheck[j])
             {
-                Debug.Log(sub_group_list[j].Count);
                 for (int i = 0; i < sub_group_list[j].Count; i++)
                 {
                     sub_group_list[j][i].GetComponent<Person>().ResetPerson();

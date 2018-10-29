@@ -61,7 +61,7 @@ public class Person : MonoBehaviour {
         seeking = false;
         speed = walk_speed;
 
-        float offset = 80;
+        float offset = 70;
         float rand_offset_x = Random.Range(-offset, offset);
         float rand_offset_z = Random.Range(-offset, offset);
         Vector3 spawn = spawn_location;
