@@ -24,7 +24,7 @@ public class PopulationManager : MonoBehaviour {
 		for (int i = 0; i < max_object_pool; i++)
         {
             GameObject person = Instantiate(person_prefab, transform.position, transform.rotation);
-            person.GetComponent<Person>().SetSpawn(transform.position);
+            person.GetComponent<Person>().SetSpawn(transform);
             person.SetActive(false);
             people.Add(person);
         }

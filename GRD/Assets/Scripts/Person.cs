@@ -15,7 +15,7 @@ public class Person : MonoBehaviour {
     public bool seeking = false;
 
     private Vector3 target_location;
-    private Vector3 spawn_location;
+    private Transform spawn_transform;
 
     [SerializeField] GameObject light;
 
@@ -26,7 +26,6 @@ public class Person : MonoBehaviour {
     void Start ()
     {
         speed = walk_speed;
-        light.SetActive(false);
 
         freq = Random.Range(1.0f, 2.0f);
     }
@@ -45,6 +44,15 @@ public class Person : MonoBehaviour {
 
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
         Bob();
+
+        if ((transform.rotation.x != 0) || (transform.rotation.x != 0))
+        {
+            Quaternion rot = transform.rotation;
+            rot.z = 0;
+            rot.x = 0;
+
+            transform.rotation = rot;
+        }
     }
 
     void RandomMovement()
@@ -67,15 +75,12 @@ public class Person : MonoBehaviour {
 
     public void ResetPerson()
     {
-        light.SetActive(false);
-
-        seeking = false;
-        speed = walk_speed;
+        StopSeeking();
 
         float offset = 70;
         float rand_offset_x = Random.Range(-offset, offset);
         float rand_offset_z = Random.Range(-offset, offset);
-        Vector3 spawn = spawn_location;
+        Vector3 spawn = spawn_transform.position;
         spawn.x += rand_offset_x;
         spawn.z += rand_offset_z;
         transform.position = spawn;
@@ -83,14 +88,22 @@ public class Person : MonoBehaviour {
         GetComponent<MeshRenderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
     }
 
-    public void SetSpawn(Vector3 _spawn)
+    public void SetSpawn(Transform _spawn)
     {
-        spawn_location = _spawn;
+        spawn_transform = _spawn;
     }
 
     public void EnableLight()
     {
         light.SetActive(true);
+    }
+
+    public void StopSeeking()
+    {
+        light.SetActive(false);
+
+        seeking = false;
+        speed = walk_speed;        
     }
 
     void Bob()

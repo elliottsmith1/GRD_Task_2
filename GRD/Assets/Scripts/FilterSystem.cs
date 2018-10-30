@@ -207,7 +207,7 @@ public class FilterSystem : MonoBehaviour
             {
                 for (int i = 0; i < sub_group_list[j].Count; i++)
                 {
-                    sub_group_list[j][i].GetComponent<Person>().ResetPerson();
+                    sub_group_list[j][i].GetComponent<Person>().StopSeeking();
                 }
             }
         }
