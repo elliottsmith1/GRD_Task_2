@@ -13,6 +13,7 @@ public class FilterSystem : MonoBehaviour
     [SerializeField] Dropdown sexdropdown_ref;
     [SerializeField] Dropdown ethnicitydropdown_ref;
     [SerializeField] Button reset_ref;
+    [SerializeField] Button sorttoflags_ref;
 
     private string disease_name;
     private string sex_name;
@@ -34,11 +35,32 @@ public class FilterSystem : MonoBehaviour
     private bool[] selectFlagCheck = new bool[numberOfFlags];  //Selected Flags Check
     private GameObject[] flagGameObjects = new GameObject[numberOfFlags]; //Array of flags
 
-    private List<GameObject> sub_group = new List<GameObject>();
+    /*private List<GameObject> sub_group = new List<GameObject>();
     private List<List<GameObject>> sub_group_list = new List<List<GameObject>>();
-
     private List<GameObject> master_group = new List<GameObject>();      //Contains all people
+    */
+
+    private List<GameObject> temp_group = new List<GameObject>();
+
+    private List<GameObject> sub_group1 = new List<GameObject>();
+    private List<GameObject> sub_group2 = new List<GameObject>();
+    private List<GameObject> sub_group3 = new List<GameObject>();
+    private List<GameObject> sub_group4 = new List<GameObject>();
+    private List<GameObject> sub_group5 = new List<GameObject>();
+    private List<GameObject> sub_group6 = new List<GameObject>();
+
     private bool check_group = false;
+
+
+    private string diseaseName = "Any";
+    private string sexName = "Any";
+    private string ethnicityName = "Any";
+
+    /*
+    private string diseaseDDName = "Disease";
+    private string sexDDName = "Sex";
+    private string ethnicityDDName = "Ethnicity";
+    */
 
     // Use this for initialization
     void Start()
@@ -51,12 +73,9 @@ public class FilterSystem : MonoBehaviour
 
         reset_ref.onClick.AddListener(ResetPersonButton); //Listener for the Reset button
 
-        for (int i = 0; i < numberOfFlags; i++)
-        {
-            flagGameObjects[i] = Spawnflag;
-        }
+        sorttoflags_ref.onClick.AddListener(SortPersonButton); //Listener for the Reset button
 
-        master_group = popmanager_ref.SelectSubPopulation("Any", "Any", "Any");
+        //master_group = popmanager_ref.SelectSubPopulation("Any", "Any", "Any");
 
     }
 
@@ -72,13 +91,33 @@ public class FilterSystem : MonoBehaviour
     //Unity Event Listener for when a dropdown menu value changes
     void DropdownValueChanged(Dropdown ddDropdown)
     {
-        if (buttonClicked == false)
+        /*if (buttonClicked == false)
         {
             string filteredname = ddDropdown.captionText.text; //The name for option that is now filtered to
             string dropdownname = ddDropdown.name; //Dropdown object name 
-
             SetNewTarget(dropdownname, filteredname);
+        }*/
+
+        switch (ddDropdown.name)
+        {
+            case "Disease":
+                diseaseName = ddDropdown.captionText.text;
+                break;
+            case "Sex":
+                sexName = ddDropdown.captionText.text;
+                break;
+            case "Ethnicity":
+                ethnicityName = ddDropdown.captionText.text;
+                break;
+            default:
+                Debug.Log("Something has gone wrong");
+                break;
         }
+    }
+
+    void SortPersonButton()
+    {
+        SetNewTarget();
     }
 
     void SelectFlagFromList(Dropdown ddDropdown)
@@ -92,51 +131,64 @@ public class FilterSystem : MonoBehaviour
         ethnicitydropdown_ref.value = 0;
 
         buttonClicked = false;
-        check_group = false;
+        //check_group = false;
     }
 
     //Sets the AI target for the filtered population
-    void SetNewTarget(string dd_name, string fn)
+    //void SetNewTarget(string dd_name, string fn)
+    void SetNewTarget()
     {
-        if (check_group)
+        /*if (check_group)
         {
             ResetPeople();
             check_group = false;
+        }*/
+        
+        if (diseasedropdown_ref.value == 0)
+        {
+            diseaseName = "Any";
         }
 
-        switch (dd_name)
+        if (sexdropdown_ref.value == 0)
         {
-            case "Disease":
-                disease_name = fn;
+            sexName = "Any";
+        }
+
+        if (ethnicitydropdown_ref.value == 0)
+        {
+            ethnicityName = "Any";
+        }
+        
+        //sub_group = popmanager_ref.SelectSubPopulation(diseaseName, sexName, ethnicityName);
+        //sub_group_list.Add(sub_group);
+
+        Debug.Log("Selected Flag = " + selectFlag);
+
+        switch (selectFlag)
+        {
+            case 0:
+                sub_group1 = new List<GameObject>(popmanager_ref.SelectSubPopulation(diseaseName, sexName, ethnicityName));
+                //temp_group
                 break;
-            case "Sex":
-                sex_name = fn;
+            case 1:
+                sub_group2 = new List<GameObject>(popmanager_ref.SelectSubPopulation(diseaseName, sexName, ethnicityName));
                 break;
-            case "Ethnicity":
-                ethnicity_name = fn;
+            case 2:
+                sub_group3 = new List<GameObject>(popmanager_ref.SelectSubPopulation(diseaseName, sexName, ethnicityName));
+                break;
+            case 3:
+                sub_group4 = new List<GameObject>(popmanager_ref.SelectSubPopulation(diseaseName, sexName, ethnicityName));
+                break;
+            case 4:
+                sub_group5 = new List<GameObject>(popmanager_ref.SelectSubPopulation(diseaseName, sexName, ethnicityName));
+                break;
+            case 5:
+                sub_group6 = new List<GameObject>(popmanager_ref.SelectSubPopulation(diseaseName, sexName, ethnicityName));
                 break;
             default:
                 Debug.Log("Something has gone wrong");
                 break;
         }
-
-        if (diseasedropdown_ref.value == 0)
-        {
-            disease_name = "Any";
-        }
-
-        if (sexdropdown_ref.value == 0)
-        {
-            sex_name = "Any";
-        }
-
-        if (ethnicitydropdown_ref.value == 0)
-        {
-            ethnicity_name = "Any";
-        }
-        
-        sub_group = popmanager_ref.SelectSubPopulation(disease_name, sex_name, ethnicity_name);
-        sub_group_list.Add(sub_group);
 
         //Setting the new position for the group to organise to
         SetNewTargetFunction();
@@ -148,7 +200,7 @@ public class FilterSystem : MonoBehaviour
         */
 
 
-        check_group = true;
+        //check_group = true;
     }
 
     void ResetPersonButton()
@@ -173,7 +225,12 @@ public class FilterSystem : MonoBehaviour
     void Flagged() //Spawns the flag on the map
     {
         //new Vector3 as a cheap edit for the size of the flag
-        Destroy(flagGameObjects[selectFlag]);
+
+        if (flagGameObjects[selectFlag] != null)
+        {
+            Destroy(flagGameObjects[selectFlag]);
+        }
+        
         flagGameObjects[selectFlag] = (GameObject) Instantiate(Spawnflag,
             flagPosition[selectFlag] + new Vector3(0f, 10f, 0), Quaternion.identity);
         if (selectFlagCheck[selectFlag])
@@ -184,7 +241,13 @@ public class FilterSystem : MonoBehaviour
 
     void Unflagged() //Takes the flag away
     {
-        Destroy(flagGameObjects[selectFlag]);
+        for (int i = 0; i < numberOfFlags; i++)
+        {
+            if (flagGameObjects[i] != null)
+            {
+                Destroy(flagGameObjects[i]);
+            }
+        }
     }
 
     void FindPointOnScreen()
@@ -201,6 +264,7 @@ public class FilterSystem : MonoBehaviour
 
     void ResetPeople()
     {
+        /*
         for (int j = 0; j < numberOfFlags; j++)
         {
             if (selectFlagCheck[j])
@@ -211,15 +275,141 @@ public class FilterSystem : MonoBehaviour
                 }
             }
         }
+        */
+
+        //Debug.Log(sub_group4.Count);      //WILL EQUAL 0
+
+        /*for (int i = 0; i < numberOfFlags; i++)
+        {
+            if (sub_group1.Count != 0)
+            {
+                for (int j = 0; j < sub_group1.Count; j++)
+                {
+                    sub_group1[i].GetComponent<Person>().StopSeeking();
+                    sub_group1.Clear();
+                }
+            }
+        }*/
+
+
+        if (sub_group1.Count != 0)
+        {
+            for (int j = 0; j < sub_group1.Count; j++)
+            {
+                sub_group1[j].GetComponent<Person>().StopSeeking();
+            }
+            sub_group1.Clear();
+        }
+
+        if (sub_group2.Count != 0)
+        {
+            for (int j = 0; j < sub_group2.Count; j++)
+            {
+                sub_group2[j].GetComponent<Person>().StopSeeking();
+            }
+            sub_group2.Clear();
+        }
+
+        if (sub_group3.Count != 0)
+        {
+            for (int j = 0; j < sub_group3.Count; j++)
+            {
+                sub_group3[j].GetComponent<Person>().StopSeeking();
+            }
+            sub_group3.Clear();
+        }
+
+        if (sub_group4.Count != 0)
+        {
+            for (int j = 0; j < sub_group4.Count; j++)
+            {
+                sub_group4[j].GetComponent<Person>().StopSeeking();
+            }
+            sub_group4.Clear();
+        }
+
+        if (sub_group5.Count != 0)
+        {
+            for (int j = 0; j < sub_group5.Count; j++)
+            {
+                sub_group5[j].GetComponent<Person>().StopSeeking();
+            }
+            sub_group5.Clear();
+        }
+
+        if (sub_group6.Count != 0)
+        {
+            for (int j = 0; j < sub_group6.Count; j++)
+            {
+                sub_group6[j].GetComponent<Person>().StopSeeking();
+            }
+            sub_group6.Clear();
+        }
+
     }
 
     void SetNewTargetFunction()
     {
+        /*
         for (int i = 0; i < sub_group_list[selectFlag].Count; i++)
         {
             sub_group_list[selectFlag][i].GetComponent<Person>().SetTarget(flagPosition[selectFlag]);
             sub_group_list[selectFlag][i].GetComponent<Person>().EnableLight();
         }
+        */
+
+        switch (selectFlag)
+        {
+            case 0:
+                for (int i = 0; i < sub_group1.Count; i++)
+                {
+                    sub_group1[i].GetComponent<Person>().SetTarget(flagPosition[selectFlag]);
+                    sub_group1[i].GetComponent<Person>().EnableLight();
+                }
+                break;
+            case 1:
+                for (int i = 0; i < sub_group2.Count; i++)
+                {
+                    sub_group2[i].GetComponent<Person>().SetTarget(flagPosition[selectFlag]);
+                    sub_group2[i].GetComponent<Person>().EnableLight();
+                }
+                break;
+            case 2:
+                for (int i = 0; i < sub_group3.Count; i++)
+                {
+                    sub_group3[i].GetComponent<Person>().SetTarget(flagPosition[selectFlag]);
+                    sub_group3[i].GetComponent<Person>().EnableLight();
+                }
+                break;
+            case 3:
+                for (int i = 0; i < sub_group4.Count; i++)
+                {
+                    sub_group4[i].GetComponent<Person>().SetTarget(flagPosition[selectFlag]);
+                    sub_group4[i].GetComponent<Person>().EnableLight();
+                }
+                break;
+            case 4:
+                for (int i = 0; i < sub_group5.Count; i++)
+                {
+                    sub_group5[i].GetComponent<Person>().SetTarget(flagPosition[selectFlag]);
+                    sub_group5[i].GetComponent<Person>().EnableLight();
+                }
+                break;
+            case 5:
+                for (int i = 0; i < sub_group6.Count; i++)
+                {
+                    sub_group6[i].GetComponent<Person>().SetTarget(flagPosition[selectFlag]);
+                    sub_group6[i].GetComponent<Person>().EnableLight();
+                }
+                break;
+            default:
+                Debug.Log("Something has gone wrong");
+                break;
+        }
+
+        Debug.Log(sub_group1.Count);    //Somehow both groups are listing the sub_group
+        Debug.Log(sub_group2.Count);
+
         selectFlagCheck[selectFlag] = true;
     }
 }

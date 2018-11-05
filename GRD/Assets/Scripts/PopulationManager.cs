@@ -64,8 +64,8 @@ public class PopulationManager : MonoBehaviour {
         for (int i = 0; i < people.Count; i++)
         {
             Person person_script = people[i].GetComponent<Person>();
-            if (!person_script.seeking)
-            {
+            //if (!person_script.seeking)
+            //{
                 if ((person_script.death_cause == _disease) || (_disease == "Any"))
                 {
                     if ((person_script.sex == _sex) || (_sex == "Any"))
@@ -76,7 +76,7 @@ public class PopulationManager : MonoBehaviour {
                         }
                     }
                 }
-            }
+            //}
         }
 
         return sub_population;
