@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641567, b: 0.5748164, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964161, b: 0.57481754, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4681,7 +4681,7 @@ MonoBehaviour:
   reset_ref: {fileID: 640650663}
   sorttoflags_ref: {fileID: 254171865}
   cam: {fileID: 605626978}
-  Spawnflag: {fileID: 1744151319775980, guid: 7df09fcee03a5ae42a55d6ee3a1f3e24, type: 2}
+  Spawnflag: {fileID: 1901688083012822, guid: 3a4e6ad503042f341bdfbeeec6c62942, type: 2}
   flagDropdown_ref: {fileID: 2120470434}
 --- !u!1 &882384548
 GameObject:
