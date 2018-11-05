@@ -13,7 +13,9 @@ public class FilterSystem : MonoBehaviour
     [SerializeField] Dropdown sexdropdown_ref;
     [SerializeField] Dropdown ethnicitydropdown_ref;
     [SerializeField] Button reset_ref;
+    [SerializeField] Button resetOne_ref;
     [SerializeField] Button sorttoflags_ref;
+
 
     private string disease_name;
     private string sex_name;
@@ -56,11 +58,7 @@ public class FilterSystem : MonoBehaviour
     private string sexName = "Any";
     private string ethnicityName = "Any";
 
-    /*
-    private string diseaseDDName = "Disease";
-    private string sexDDName = "Sex";
-    private string ethnicityDDName = "Ethnicity";
-    */
+
 
     // Use this for initialization
     void Start()
@@ -72,6 +70,7 @@ public class FilterSystem : MonoBehaviour
         flagDropdown_ref.onValueChanged.AddListener(delegate { SelectFlagFromList(flagDropdown_ref); });
 
         reset_ref.onClick.AddListener(ResetPersonButton); //Listener for the Reset button
+        resetOne_ref.onClick.AddListener(ResetOnePersonButton); //Listener for the Reset button
 
         sorttoflags_ref.onClick.AddListener(SortPersonButton); //Listener for the Reset button
 
@@ -222,6 +221,21 @@ public class FilterSystem : MonoBehaviour
         buttonClicked = false;
     }
 
+    void ResetOnePersonButton()
+    {
+        buttonClicked = true;
+
+        UnflaggedOne();
+        ResetPeopleOne();
+
+        diseasedropdown_ref.value = 0;
+        sexdropdown_ref.value = 0;
+        ethnicitydropdown_ref.value = 0;
+
+        selectFlagCheck[selectFlag] = false;
+        buttonClicked = false;
+    }
+
     void Flagged() //Spawns the flag on the map
     {
         //new Vector3 as a cheap edit for the size of the flag
@@ -250,6 +264,11 @@ public class FilterSystem : MonoBehaviour
         }
     }
 
+    void UnflaggedOne()
+    {
+        Destroy(flagGameObjects[selectFlag]);
+    }
+
     void FindPointOnScreen()
     {
         Ray rrRay = cam.ScreenPointToRay(Input.mousePosition);
@@ -264,34 +283,6 @@ public class FilterSystem : MonoBehaviour
 
     void ResetPeople()
     {
-        /*
-        for (int j = 0; j < numberOfFlags; j++)
-        {
-            if (selectFlagCheck[j])
-            {
-                for (int i = 0; i < sub_group_list[j].Count; i++)
-                {
-                    sub_group_list[j][i].GetComponent<Person>().StopSeeking();
-                }
-            }
-        }
-        */
-
-        //Debug.Log(sub_group4.Count);      //WILL EQUAL 0
-
-        /*for (int i = 0; i < numberOfFlags; i++)
-        {
-            if (sub_group1.Count != 0)
-            {
-                for (int j = 0; j < sub_group1.Count; j++)
-                {
-                    sub_group1[i].GetComponent<Person>().StopSeeking();
-                    sub_group1.Clear();
-                }
-            }
-        }*/
-
-
         if (sub_group1.Count != 0)
         {
             for (int j = 0; j < sub_group1.Count; j++)
@@ -345,7 +336,63 @@ public class FilterSystem : MonoBehaviour
             }
             sub_group6.Clear();
         }
+    }
 
+    void ResetPeopleOne()
+    {
+        if (sub_group1.Count != 0 && selectFlag == 0)
+        {
+            for (int j = 0; j < sub_group1.Count; j++)
+            {
+                sub_group1[j].GetComponent<Person>().StopSeeking();
+            }
+            sub_group1.Clear();
+        }
+
+        if (sub_group2.Count != 0 && selectFlag == 1)
+        {
+            for (int j = 0; j < sub_group2.Count; j++)
+            {
+                sub_group2[j].GetComponent<Person>().StopSeeking();
+            }
+            sub_group2.Clear();
+        }
+
+        if (sub_group3.Count != 0 && selectFlag == 2)
+        {
+            for (int j = 0; j < sub_group3.Count; j++)
+            {
+                sub_group3[j].GetComponent<Person>().StopSeeking();
+            }
+            sub_group3.Clear();
+        }
+
+        if (sub_group4.Count != 0 && selectFlag == 3)
+        {
+            for (int j = 0; j < sub_group4.Count; j++)
+            {
+                sub_group4[j].GetComponent<Person>().StopSeeking();
+            }
+            sub_group4.Clear();
+        }
+
+        if (sub_group5.Count != 0 && selectFlag == 4)
+        {
+            for (int j = 0; j < sub_group5.Count; j++)
+            {
+                sub_group5[j].GetComponent<Person>().StopSeeking();
+            }
+            sub_group5.Clear();
+        }
+
+        if (sub_group6.Count != 0 && selectFlag == 5)
+        {
+            for (int j = 0; j < sub_group6.Count; j++)
+            {
+                sub_group6[j].GetComponent<Person>().StopSeeking();
+            }
+            sub_group6.Clear();
+        }
     }
 
     void SetNewTargetFunction()
